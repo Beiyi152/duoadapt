@@ -1,4 +1,4 @@
-# Depth-Selective Dual Adapters for Frozen-Foundation-Model Medical Image Segmentation
+# DuoAdapt: Dual-Level Orthogonal Adaptation of a Frozen Foundation Model for Multi-Modal Medical Image Segmentation
 
 Reference implementation of the method described in our manuscript (under review). The
 framework freezes a DINOv2 ViT-S/14 backbone and combines two lightweight adapters that act
@@ -81,7 +81,7 @@ python train.py --dataset busi --use_dgf 1 --dgf_ratio 0.5 --use_l3 0 --seed 42
 # L³ alone
 python train.py --dataset busi --use_dgf 0 --use_l3 1 --l3_blocks tail --l3_rank 8 --seed 42
 
-# FULL (DGF + L³) — the model reported in the paper
+# DuoAdapt (DGF + L³) — the model reported in the paper
 python train.py --dataset busi --dgf_ratio 0.5 \
                 --use_l3 1 --l3_blocks tail --l3_rank 8 --seed 42
 ```
@@ -100,7 +100,7 @@ the test split (infinite HD95 values from empty predictions are excluded before 
 
 ## Reported results (single seed 42)
 
-| Dataset | G0 | DGF alone | L³ alone | **FULL** |
+| Dataset | G0 | DGF alone | L³ alone | **DuoAdapt** |
 |---|---|---|---|---|
 | BUSI | 0.7117 | 0.8049 | 0.7565 | **0.8133** |
 | CVC-ClinicDB | 0.8917 | 0.9191 | 0.9077 | **0.9272** |
@@ -109,8 +109,8 @@ the test split (infinite HD95 values from empty predictions are excluded before 
 | TN3K | 0.7723 | 0.8084 | 0.7878 | **0.8165** |
 | Average | 0.8250 | 0.8704 | 0.8511 | **0.8777** |
 
-FULL improves over L³ on all five datasets and over DGF on four of the five; the exception is
-ISIC 2018, where FULL and DGF are statistically tied (−0.03 pp) and reported as such.
+DuoAdapt improves over L³ on all five datasets and over DGF on four of the five; the exception is
+ISIC 2018, where DuoAdapt and DGF are statistically tied (−0.03 pp) and reported as such.
 
 Please refer to the manuscript tables for the full seven-metric, per-dataset numbers and for the
 comparison with six external baselines. Candidate qualitative examples are real model
@@ -128,9 +128,9 @@ predictions; aggregate claims are carried by the tables, not by the selected exa
 ## Citation
 
 ```bibtex
-@article{ac3_dualadapters,
-  title   = {Depth-Selective Dual Adapters over a Frozen Foundation Model for
-             Multi-Modal Medical Image Segmentation},
+@article{duoadapt,
+  title   = {DuoAdapt: Dual-Level Orthogonal Adaptation of a Frozen Foundation Model
+             for Multi-Modal Medical Image Segmentation},
   author  = {TODO},
   journal = {TODO},
   year    = {TODO}
