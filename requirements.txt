@@ -1,0 +1,10 @@
+# Runtime dependencies for the DGF + L³ reference implementation.
+# Install PyTorch manually to match your CUDA version, e.g.
+#   pip install torch==2.1.0 torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cu118
+
+torch>=2.0
+torchvision>=0.15
+numpy>=1.24
+scipy>=1.10
+Pillow>=9.0
+tqdm>=4.64
